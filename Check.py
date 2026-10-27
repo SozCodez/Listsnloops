@@ -27,36 +27,55 @@
 # TASK 1:
 # Create a list named scores containing 85, 92, 78, 96, 88.
 # Print the entire list and its length using len().
-
+scores = [85, 92, 78, 96, 88]
+lengthScores = len(scores)
+print(scores, "length:", lengthScores)
 
 # TASK 2:
 # Using scores from Task 1, print the FIRST, THIRD, and LAST
 # elements on separate lines. Use indexes, not hard-coded values.
-
+First = scores[0]
+Third = scores[2]
+Last = scores[len(scores) - 1]
+print(First)
+print(Third)
+print(Last)
 
 # TASK 3:
 # Change the third element of scores to 100.
 # Print the updated list. Do not create a replacement list.
-
+scores[2] = 100
+print(scores)
 
 # TASK 4:
 # Create games = ["Minecraft", "Roblox", "Fortnite"].
 # Append "Valorant" and insert "Rocket League" at index 1.
 # Print games. Check the order carefully.
-
+games = ["Minecraft", "Roblox", "Fortnite"]
+games.append("Valorant")
+games.insert(1, "Rocket League")
+print(games)
 
 # TASK 5:
 # Using games from Task 4, remove "Roblox" with remove().
 # Then pop the FIRST item into a variable named removed_game.
 # Print removed_game and the remaining games list.
-
+games.remove("Roblox")
+removedGame = games.pop(0)
+print("Removed:", removedGame)
+print(games)
 
 # TASK 6:
 # Create colors = ["red", "blue", "green", "yellow", "purple"].
 # Store the index of "green" in green_index using index().
 # Print green_index. Then replace "yellow" with "orange".
 # Print the new list.
-
+colors = ["red", "blue", "green", "yellow", "purple"]
+greenIndex = colors.index("green")
+print(greenIndex)
+yellowIdx = colors.index("yellow")
+colors[yellowIdx] = "orange"
+print(colors)
 
 # ============================================================
 # SECTION 2 — FOR LOOPS & RANGE (TASKS 7–12)
@@ -65,30 +84,43 @@
 # TASK 7:
 # Use a for loop with range() to print numbers 1 through 20,
 # INCLUDING 20. Do not manually print the numbers.
+print()
+for i in range(1, 21):
+    print(i)
 
 
 # TASK 8:
 # Use a for loop with range() to print 30, 27, 24, ... 0.
 # IMPORTANT: The zero must be included.
-
+print()
+for i in range(30, -1, -1):
+    print(i)
 
 # TASK 9:
 # Use a for loop to print all EVEN numbers from 1 to 50.
 # You MUST use an if statement and the % operator inside the loop.
-
+print()
+for i in range(1, 51):
+    if i % 2 == 0:
+        print(i)
 
 # TASK 10:
 # Create number = 7.
 # Print its multiplication table from 1 through 12 using a for loop.
 # Example line: 7 x 3 = 21
 # Your code must also work if number changes.
-
+print()
+number = 7
+for i in range(1, 13):
+    print(i * number)
 
 # TASK 11:
 # Create students = ["Alex", "Jordan", "Taylor", "Morgan", "Casey"].
 # Use a for loop to print "Student: " followed by each name.
 # Do NOT write five separate print statements.
-
+students = ["Alex", "Jordan", "Taylor", "Morgan", "Casey"]
+for name in students:
+    print("Student:", name)
 
 # TASK 12:
 # Using students, print a NUMBERED roster:
@@ -97,7 +129,8 @@
 # ...
 # 5. Casey
 # Use range(len(students)) OR enumerate().
-
+for i in range(len(students)):
+    print(str(i + 1) + ".", students[i])
 
 # ============================================================
 # SECTION 3 — WHILE LOOPS & VALIDATION (TASKS 13–18)
@@ -107,8 +140,16 @@
 # Create countdown = 10.
 # Use a while loop to print from countdown down to 0.
 # Then print "Blast off!". Avoid an infinite loop.
+countdown = 10
+while countdown > 0:
+    print(countdown)
+    countdown -= 1
+    if countdown == 0:
+        print(countdown)
+        print("Blast off!")
+        break
 
-
+#test
 # TASK 14:
 # Create password = "Python123".
 # Keep asking the user for a password until it matches.
