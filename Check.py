@@ -524,7 +524,7 @@ while number <= 5:  #what was wrong here was we didnt increase our number, so wh
 # HINT: A while loop and 'in' can help.
 values = [4, 4, 7, 4, 9]
 while 4 in values:          #we need a while loop because the og goes throught first 3
-    values.remove(value)    #values, then stops because the first 4s are removed and theres
+    values.remove(4)    #values, then stops because the first 4s are removed and theres
 print(values)               #only 3 indexes to go through and has counted 3 indexes gone through
 
 #while loops makes it remove the first matching value as long as it recognizes a 4 in the list
@@ -546,6 +546,80 @@ print(values)               #only 3 indexes to go through and has counted 3 inde
 # - Use 'in' to prevent duplicates and 'not in' to reject missing items.
 # - Handle an empty list and invalid menu selections.
 # - Keep running until the user chooses Exit.
+start = True
+shopping_list = []
+choice1Opt = [1, 2, 3, 4, 5]
+choice2Opt = [1, 2, 3]
+choice3Opt = choice2Opt
+choice4Opt = ["close"]
+choice5Opt = ["close", "water", "chips", "pbj"]
+
+while start:
+    print()
+    print("1. Add item")
+    print("2. Remove item")
+    print("3. View numbered items")
+    print("4. Search for item")
+    print("5. Exit")
+    choice1 = "6"
+    while int(choice1) not in choice1Opt:
+        choice1 = input("Enter # of choice: ")
+    if int(choice1) == choice1Opt[0]:
+        print()
+        print("Which item would you like to add?")
+        print("1. Water")
+        print("2. Chips")
+        print("3. PBJ")
+        choice2 = "4"
+        while int(choice2) not in choice2Opt:
+            choice2 = input("Enter # of item: ")
+        if int(choice2) == choice2Opt[0]:
+            shopping_list.append("Water")
+        elif int(choice2) == choice2Opt[1]:
+            shopping_list.append("Chips")
+        elif int(choice2) == choice2Opt[2]:
+            shopping_list.append("PBJ")
+    elif int(choice1) == choice1Opt[1]:
+        print()
+        print("Which item would you like to remove?")
+        print("1. Water")
+        print("2. Chips")
+        print("3. PBJ")
+        choice3 = "4"
+        while int(choice3) not in choice3Opt:
+            choice3 = input("Enter # of item: ")
+        if int(choice3) == choice3Opt[0]:
+            shopping_list.remove("Water")
+        elif int(choice3) == choice3Opt[1]:
+            shopping_list.remove("Chips")
+        elif int(choice3) == choice3Opt[2]:
+            shopping_list.remove("PBJ")
+    elif int(choice1) == choice1Opt[2]:
+        print()
+        print("~Items~")
+        print("1. Water")
+        print("2. Chips")
+        print("3. PBJ")
+        choice4 = ""
+        while choice4 not in choice4Opt:
+            choice4 = input("Type 'close' to return: ")
+    elif int(choice1) == choice1Opt[3]:
+        print()
+        print("~Search~")
+        choice5 = ""
+        while choice5 not in choice5Opt:
+            choice5 = input("Type name of item or 'close' to return: ")
+        if choice5 in choice5Opt and choice5 != "close":
+            print("Item Available")
+        else:
+            print("Item Unavailable")
+    elif int(choice1) == choice1Opt[4]:
+        print()
+        print("Thankyou for shopping!")
+        break
+
+
+
 
 
 # TASK 39 — GRADE ANALYZER:
@@ -558,7 +632,40 @@ print(values)               #only 3 indexes to go through and has counted 3 inde
 # Test: analyze_grades([95, 82, 67, 74, 58])
 # Expected: [95, 58, 75.2, 3, 2]
 # Test with a single grade and all-negative values too.
+def analyze_grades(grades):
+    analyzedList = []
+    passingScore = 70
+    highest_grade = 0
+    lowest_grade = 100
+    gradeTot = 0
+    passing_count = 0
+    failing_count = 0
+    for grade in grades:
+        gradeTot += grade
+        if grade < 70:
+            failing_count += 1
+        else:
+            passing_count += 1
+        
+        if grade >= highest_grade:
+            highest_grade = grade
+        
+        if grade <= lowest_grade:
+            lowest_grade = grade
+    average_grade = gradeTot / len(grades)
+    analyzedList.append(highest_grade)
+    analyzedList.append(lowest_grade)
+    analyzedList.append(average_grade)
+    analyzedList.append(passing_count)
+    analyzedList.append(failing_count)
+    return analyzedList
 
+test = analyze_grades([95, 82, 67, 74, 58])
+print(test)
+test = analyze_grades([95])
+print(test)
+test = analyze_grades([-95, -82, -67, -74, 58])
+print(test)
 
 # TASK 40 — STUDENT ATTENDANCE SYSTEM:
 # Start with:
@@ -576,6 +683,46 @@ print(values)               #only 3 indexes to go through and has counted 3 inde
 # - Create attendance_percentage(present, students) that RETURNS
 #   the percentage; if students is empty, RETURN 0.
 # - Test with all present, all absent, and a mixture.
+students = ["Alex", "Jordan", "Taylor", "Morgan", "Casey"]
+present = []
+present_count = 0
+absent = []
+mark = ""
+markOpt = ["p", "a"]
+for student in students:
+    mark = ""
+    while mark not in markOpt:
+        print(student)
+        mark = input("Enter 'p' or 'a' for present or absent: ")
+    if mark == "p":
+        if student not in present:
+            present.append(student)
+    else:
+        if student not in absent:
+            absent.append(student)
+presentNum = 0
+print("~Present~")
+for student in present:
+    presentNum += 1
+    print(presentNum, student)
+absentNum = 0
+print("~Absent~")
+for student in absent:
+    absentNum += 1
+    print(absentNum, student)
+print()
+print("Present:", presentNum)
+print("Absent:", absentNum)
+def attendance_percentage(present, students):
+    if len(present) > 0:
+        attendance_percentage = len(present) / len(students) * 100
+    else:
+        attendance_percentage = 0
+    return attendance_percentage
+
+print("Attendance:", str(attendance_percentage(present, students)) + "%")
+if len(present) == len(students):
+    print("Perfect Attendance!")
 
 
 # ============================================================
