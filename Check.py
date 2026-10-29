@@ -154,27 +154,54 @@ while countdown > 0:
 # Create password = "Python123".
 # Keep asking the user for a password until it matches.
 # Print "Access granted" exactly once after a correct entry.
-
+password = "Python123"
+inputPwd = ""
+while inputPwd != "Python123":
+    inputPwd = input("Please Enter Password: ")
+    if inputPwd == "Python123":
+        print("Access granted")
 
 # TASK 15:
 # Ask the user for an integer between 1 and 10 INCLUSIVE.
 # Keep asking while the value is invalid.
 # After a valid entry, print "Valid number".
 # Test 0, 1, 10, and 11.
-
+inputNum = "12"
+while not 10 >= int(inputNum) >= 1:
+    inputNum = input("Enter integer between 1 and 10: ")
+    if 10 >= int(inputNum) >= 1:
+        print("Valid Number")
 
 # TASK 16:
 # Create total = 0.
 # Repeatedly ask for an integer. Add each nonzero entry to total.
 # Stop when the user enters 0, then print total.
 # Example inputs: 5, 8, -2, 0 -> Total: 11.
-
+total = 0
+inputInt = "20"
+while int(inputInt) != 0:
+    inputInt = input("Enter integer: ")
+    total += int(inputInt)
+    if int(inputInt) == 0:
+        print(total)
 
 # TASK 17:
 # Create secret = "robot" and attempts = 3.
 # Ask the user to guess secret, allowing AT MOST 3 guesses.
 # Print "Correct" if guessed in time; otherwise "Out of attempts".
 # Make sure a correct guess does NOT print both messages.
+secret = "robot"
+attempts = 3
+while attempts > 0:
+    print("Attempts:", attempts)
+    guess = input("Guess the secret: ")
+    if guess == "robot":
+        print("Correct!")
+        break
+    else:
+        attempts -= 1
+    if attempts == 0:
+        print("Out of attempts:(")
 
 
 # TASK 18:
@@ -184,7 +211,21 @@ while countdown > 0:
 # 3. Exit
 # Repeat until the user enters 3. Handle invalid choices.
 # Print "Goodbye" only when option 2 is selected.
-
+start = True
+while start:
+    print("1. Say Hello\n2. Say Goodbye\n3. Exit")
+    choice0 = input("Enter # of choice: ")
+    while "2" != choice0 != "1" and choice0 != "3":
+        choice0 = input("Please Enter Valid #: ")
+    if choice0 == "1":
+        print("Hello")
+        print("\n\n\n\n\n")
+    elif choice0 == "2":
+        print("Goodbye")
+        print("\n\n\n\n\n")
+    elif choice0 == "3":
+        print("\n\n\n\n\n\n\n\n\n")
+        break
 
 # ============================================================
 # SECTION 4 — PROCESSING LISTS WITH LOOPS (TASKS 19–24)
@@ -194,40 +235,74 @@ while countdown > 0:
 # Create numbers = [4, 8, 15, 16, 23, 42].
 # Use a for loop to calculate and print their total.
 # Do NOT use sum().
-
+numbers = [4, 8, 15, 16, 23, 42]
+numbersTot = 0
+for num in numbers:
+    numbersTot += num
+print(numbersTot)
 
 # TASK 20:
 # Create grades = [90, 85, 78, 92, 88].
 # Use a loop and len() to calculate the average.
 # Print the average. Do NOT use sum().
-
+grades = [90, 85, 78, 92, 88]
+totGrades = 0
+for i in grades:
+    totGrades += i
+avgGrades = totGrades / len(grades)
+print(avgGrades)
 
 # TASK 21:
 # Create numbers = [3, 8, 12, 7, 15, 20, 24, 9].
 # Use ONE loop to count even and odd values separately.
 # Print "Even: [count]" and "Odd: [count]".
-
+numbers = [3, 8, 12, 7, 15, 20, 24, 9]
+evenCnt = 0
+oddCnt = 0
+for num in numbers:
+    if num % 2 == 0:
+        evenCnt += 1
+    else:
+        oddCnt += 1
+print("Even:", evenCnt)
+print("Odd:", oddCnt)
 
 # TASK 22:
 # Create numbers = [-14, -67, -23, -89, -45].
 # Use a loop to find and print the HIGHEST number.
 # Do NOT use max() or sorting.
 # IMPORTANT: Starting your answer at 0 gives a wrong result.
-
+numbers = [-14, -67, -23, -89, -45]
+highestNum = -100
+for num in numbers:
+    if num >= highestNum:
+        highestNum = num
+print(highestNum)
 
 # TASK 23:
 # Create numbers = [14, 67, 23, 89, 45, 12].
 # Use a loop to find and print the LOWEST number.
 # Do NOT use min() or sorting.
 # Your logic must also work with all-negative numbers.
-
+numbers = [14, 67, 23, 89, 45, 12]
+lowestNum = 100
+for num in numbers:
+    if num <= lowestNum:
+        lowestNum = num
+print(lowestNum)
 
 # TASK 24:
 # Create numbers = [5, 2, 5, 8, 5, 3, 2, 5].
 # Create target = 5.
 # Use a loop to count how often target appears; print the count.
 # Do NOT use count(). It must work if target changes.
-
+numbers = [5, 2, 5, 8, 5, 3, 2, 5]
+target = 5
+targetCnt = 0
+for num in numbers:
+    if num == target:
+        targetCnt += 1
+print("Count:", targetCnt)
 
 # ============================================================
 # SECTION 5 — IN / NOT IN (TASKS 25–30)
@@ -254,14 +329,24 @@ while countdown > 0:
 # Ask the user to enter a food.
 # Use 'in' to print "Available" or "Not available".
 # Do NOT use index() to search.
-
+foods = ["pizza", "burger", "tacos", "sushi", "pasta"]
+inpFood = input("Enter a food name in lowercase: ")
+if inpFood in foods:
+    print("Available")
+else:
+    print("Not available")
 
 # TASK 26:
 # Create supplies = ["pencil", "notebook", "eraser", "backpack"].
 # Ask the user for an item.
 # Use 'not in' to print "Need to buy" if it is missing,
 # otherwise print "Already have it".
-
+supplies = ["pencil", "notebook", "eraser", "backpack"]
+inpSupply = input("Enter item in lowercase: ")
+if inpSupply not in supplies:
+    print("Need to buy")
+else:
+    print("Already have it")
 
 # TASK 27:
 # Create usernames = ["alex123", "gamer99", "pythonpro"].
@@ -269,7 +354,13 @@ while countdown > 0:
 # If it is already in the list, print "Username taken".
 # Otherwise append it and print the updated list.
 # Do not allow duplicates.
-
+usernames = ["alex123", "gamer99", "pythonpro"]
+inpUsername = input("Enter new username: ")
+if inpUsername in usernames:
+    print("Username taken")
+else:
+    usernames.append(inpUsername)
+    print(usernames)
 
 # TASK 28:
 # Modify the idea from Task 27 using a NEW list named accounts.
@@ -277,22 +368,47 @@ while countdown > 0:
 # Use a while loop to keep asking until the entered name
 # is NOT in accounts. Append the accepted name and print accounts.
 # REQUIREMENT: Use 'not in' in your solution.
-
+accounts = ["admin", "guest"]
+inpAccount = "guest"
+while inpAccount in accounts:
+    inpAccount = input("Enter account name: ")
+    if inpAccount not in accounts:
+        accounts.append(inpAccount)
+        print(accounts)
+        break
 
 # TASK 29:
 # Create secret_words = ["dragon", "robot", "python", "galaxy"].
 # Keep asking the user for a word UNTIL it is in secret_words.
 # Count and print the number of guesses made.
 # A correct first guess should count as 1.
-
-
+secret_words = ["dragon", "robot", "python", "galaxy"]
+guesses = 1
+inpWord = "filler"
+while inpWord not in secret_words:
+    inpWord = input("Enter secret word: ")
+    if inpWord in secret_words:
+        print("Correct on", guesses, "try!")
+        break
+    else:
+        guesses += 1
+        
 # TASK 30:
 # Create guests = [].
 # Ask the user to enter EXACTLY FIVE UNIQUE guest names.
 # If a name is already in guests, reject it and ask again.
 # Use a while loop, 'in' or 'not in', and append().
 # Print the finished list and its length.
-
+guests = []
+names = 0
+while names < 5:
+    inpName = input("Enter 5 unique names: ")
+    if inpName in guests:
+        print("Name already added")
+    else:
+        guests.append(inpName)
+        names += 1
+print(guests, "count:", names)
 
 # ============================================================
 # SECTION 6 — LISTS + FUNCTIONS (TASKS 31–35)
@@ -303,7 +419,15 @@ while countdown > 0:
 # RETURN how many elements are greater than 0.
 # Do NOT use count().
 # Test: count_positive([-2, 0, 4, 9, -1]) -> 2
+def count_positive(numbers):
+    posCnt = 0
+    for num in numbers:
+        if num > 0:
+            posCnt += 1
+    return posCnt
 
+numOfPos = count_positive([-2, 0, 4, 9, -1])
+print("Positive numbers:", numOfPos)
 
 # TASK 32:
 # Create a function named find_item(items, target).
@@ -311,14 +435,31 @@ while countdown > 0:
 # Do NOT use index().
 # Test: find_item(["cat", "dog", "cat"], "cat") -> 0
 # Test: find_item(["cat", "dog"], "fish") -> -1
+def find_item(items, target):
+    itemIdx = -1
+    if target in items:
+        itemIdx = items.index(target)
+    return itemIdx
 
+test = find_item(["cat", "dog", "cat"], "cat")
+print(test)
+test = find_item(["cat", "dog"], "fish")
+print(test)
 
 # TASK 33:
 # Create a function named unique_items(items).
 # RETURN a NEW list without duplicate values, preserving first
 # appearance order. REQUIREMENT: Use 'not in'.
 # Test: unique_items([1, 2, 2, 3, 1, 4]) -> [1, 2, 3, 4]
+def unique_items(items):
+    uniItems = []
+    for item in items:
+        if item not in uniItems:
+            uniItems.append(item)
+    return uniItems
 
+test = unique_items([1, 2, 2, 3, 1, 4])
+print(test)
 
 # TASK 34:
 # Create a function named common_items(list1, list2).
@@ -326,14 +467,30 @@ while countdown > 0:
 # Include each matching value only once, in list1's order.
 # REQUIREMENT: Use both 'in' and 'not in'.
 # Test: common_items([1, 2, 3, 3], [3, 4, 1]) -> [1, 3]
+def common_items(list1, list2):
+    commons = []
+    for item in list1:
+        if item in list2:
+            if item not in commons:
+                commons.append(item)
+    return commons
 
+test = common_items([1, 2, 3, 3], [3, 4, 1])
+print(test)
 
 # TASK 35:
 # Create a function named reverse_list(items).
 # RETURN a NEW list in reverse order, without changing items.
 # Do NOT use reverse(), reversed(), or [::-1].
 # Test: reverse_list([10, 20, 30]) -> [30, 20, 10]
+def reverse_list(items):
+    reversedList = []
+    for item in items:
+        reversedList.insert(0, item)
+    return reversedList
 
+test = reverse_list([10, 20, 30])
+print(test)
 
 # ============================================================
 # SECTION 7 — DEBUGGING (TASKS 36–37)
@@ -348,7 +505,10 @@ while countdown > 0:
 #     print(number)
 #
 # Do NOT replace the while loop with a for loop.
-
+number = 1
+while number <= 5:  #what was wrong here was we didnt increase our number, so while was
+    print(number)   #always true, and it always printed 1
+    number += 1     
 
 # TASK 37:
 # Fix this code so it removes ALL 4s without skipping any.
@@ -362,7 +522,12 @@ while countdown > 0:
 #
 # Expected: [7, 9]
 # HINT: A while loop and 'in' can help.
+values = [4, 4, 7, 4, 9]
+while 4 in values:          #we need a while loop because the og goes throught first 3
+    values.remove(value)    #values, then stops because the first 4s are removed and theres
+print(values)               #only 3 indexes to go through and has counted 3 indexes gone through
 
+#while loops makes it remove the first matching value as long as it recognizes a 4 in the list
 
 # ============================================================
 # FINAL BOSS CHALLENGES (TASKS 38–40)
